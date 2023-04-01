@@ -1,4 +1,4 @@
-
+'''
 class Obstacle:
     def __init__(self):
         pass
@@ -17,3 +17,4 @@ class Obstacle:
     CON CONSTRUCTOR
     CLASE 1
     """
+'''
