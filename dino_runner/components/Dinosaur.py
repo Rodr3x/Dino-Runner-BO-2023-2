@@ -3,8 +3,8 @@ from dino_runner.utils.constants import RUNNING, JUMPING, DUCKING
 
 class Dinosaur:
     X_POS = 80
-    Y_POS = 310
-    Y_POS_DUCK = 340
+    Y_POS = 380
+    Y_POS_DUCK = 410
     JUMP_VEL = 8.5
 
     def __init__(self):
