@@ -7,3 +7,5 @@ if __name__ == "__main__":
     game = Game()
     game.run()
     print("hello there...")
+
+#actulizar la imagen cuando el dino muere
