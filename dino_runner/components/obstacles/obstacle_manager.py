@@ -1,12 +1,19 @@
 from dino_runner.components.obstacles.Cactus import Cactus
+from dino_runner.components.obstacles.Birds import Birds
+from random import randint
 
 class ObstacleManager:
     def __init__(self):
         self.obstacles = []
+        self.sw = 0
     
     def update(self, game_speed, player):
         if len(self.obstacles) == 0:
-            self.obstacles.append(Cactus())
+            if randint(0,1) == 1:
+                self.obstacles.append(Cactus())
+            else:
+                self.obstacles.append(Birds(self.sw))
+                self.sw = 1 - self.sw
 
         for obstacle in self.obstacles:
             if obstacle.rect.x < -obstacle.rect.width:
@@ -16,5 +23,4 @@ class ObstacleManager:
     def draw(self, screen):
         for obstacle in self.obstacles:
             obstacle.draw(screen)
-
     
