@@ -4,6 +4,8 @@
         "blit",
         "colliderect",
         "ESTATICAS",
+        "freesansbols",
+        "KEYDOWN",
         "NUBES",
         "pygame",
         "TAREA"

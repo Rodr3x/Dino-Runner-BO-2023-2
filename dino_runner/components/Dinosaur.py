@@ -8,7 +8,7 @@ class Dinosaur:
     X_POS = 80
     Y_POS = 380
     Y_POS_DUCK = 410
-    JUMP_VEL = 8.5
+    JUMP_VEL = 9.5
 
     def __init__(self):
         # tenemos la imagen y posicion
@@ -31,6 +31,10 @@ class Dinosaur:
         self.dino_jump = False
         self.jump_vel = self.JUMP_VEL
         self.dino_dead = False
+        ##
+        self.shield = False
+        self.hammer = False
+        self.time_up_power_up = 0
 
     def update(self, user_input):
         if self.dino_jump:
@@ -39,7 +43,6 @@ class Dinosaur:
             self.duck()
         if self.dino_run:
             self.run()
-
 
         if user_input[pygame.K_DOWN] and not self.dino_jump:
             self.dino_run = False
@@ -56,6 +59,11 @@ class Dinosaur:
 
         if self.step_index >= 10:
             self.step_index = 0
+
+        if self.shield or self.hammer:
+            time_to_show = round((self.time_up_power_up - pygame.time.get_ticks()) / 1000 , 2)
+            if time_to_show < 0:
+                self.reset()
 
     def draw(self, screen):
         screen.blit(self.image, self.dino_rect)
@@ -90,5 +98,18 @@ class Dinosaur:
     def set_power_up(self, power_up):
         if power_up.type == SHIELD_TYPE:
             self.type = SHIELD_TYPE
-        else:
+            self.shield = True
+            self.time_up_power_up = power_up.time_up
+
+        elif power_up.type == HAMMER_TYPE:
             self.type = HAMMER_TYPE
+            self.hammer = True
+            self.time_up_power_up = power_up.time_up
+
+    def reset(self):
+        if self.type == SHIELD_TYPE:
+            self.shield = False
+        else:
+            self.hammer = False
+        self.type = DEFAULT_TYPE
+        self.time_up_power_up = 0

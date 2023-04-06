@@ -5,6 +5,7 @@ from random import randint
 class PowerUp:
     Y_POS_POWER_UP = [250, 350]
     POWER_UP_DURATION = 5000
+    
     def __init__(self, image, type):
         self.image = image
         self.type = type

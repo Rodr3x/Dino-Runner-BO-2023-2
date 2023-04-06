@@ -6,8 +6,11 @@ if __name__ == "__main__":
     game.run()
     print("hello there...")
     
-# CLASS 4
-# APARECER EL MARTILLO IDENTICO A EL ESCUDO
-# DEBE APARCER ALEATORIAMENTE YA SEA EL MARTILLO O ESCUDO
+# CLASS 5
+# MOSTRAR EL TIEMPO QUE QUEDA EN UN POWER UP
+
+# sugerencias
+# en el menu podemos guardar el maximo puntaje
+# cantidad de cactus evitados, etc
 
 
