@@ -3,6 +3,7 @@ from dino_runner.utils.constants import (RUNNING,RUNNING_SHIELD, JUMPING,JUMPING
                                         DUCKING, DUCKING_SHIELD, DEAD, DEFAULT_TYPE, 
                                         SHIELD_TYPE, RUNNING_HAMMER, DUCKING_HAMMER, JUMPING_HAMMER,
                                         HAMMER_TYPE)
+from dino_runner.components import text_utils
 
 class Dinosaur:
     X_POS = 80
@@ -31,10 +32,11 @@ class Dinosaur:
         self.dino_jump = False
         self.jump_vel = self.JUMP_VEL
         self.dino_dead = False
-        ##
+        #
         self.shield = False
         self.hammer = False
         self.time_up_power_up = 0
+        self.time_to_show = 0
 
     def update(self, user_input):
         if self.dino_jump:
@@ -61,8 +63,8 @@ class Dinosaur:
             self.step_index = 0
 
         if self.shield or self.hammer:
-            time_to_show = round((self.time_up_power_up - pygame.time.get_ticks()) / 1000 , 2)
-            if time_to_show < 0:
+            self.time_to_show = round((self.time_up_power_up - pygame.time.get_ticks()) / 1000 , 2)
+            if self.time_to_show <= 0:
                 self.reset()
 
     def draw(self, screen):
@@ -109,7 +111,8 @@ class Dinosaur:
     def reset(self):
         if self.type == SHIELD_TYPE:
             self.shield = False
-        else:
+        elif self.type == HAMMER_TYPE:
             self.hammer = False
+
         self.type = DEFAULT_TYPE
         self.time_up_power_up = 0

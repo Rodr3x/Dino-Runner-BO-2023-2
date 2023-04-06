@@ -8,7 +8,8 @@ class Cactus(Obstacle):
     def __init__(self):
         self.type = randint(0, 5)
         image = self.vec[self.type]
-        super().__init__(image)
+        super().__init__(image, "Cactus")
+
         if self.type >= 3:
             self.rect.y = self.Y_POS_CACTUS - 25
         else:

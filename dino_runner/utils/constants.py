@@ -5,7 +5,7 @@ import os
 TITLE = "Chrome Dino Runner"
 SCREEN_HEIGHT = 600
 SCREEN_WIDTH = 1100
-FPS = 30
+FPS = 45
 IMG_DIR = os.path.join(os.path.dirname(__file__), "..", "assets")
 
 # Assets Constants
@@ -68,6 +68,10 @@ BIRD = [
 CLOUD = pygame.image.load(os.path.join(IMG_DIR, 'Other/Cloud.png'))
 SHIELD = pygame.image.load(os.path.join(IMG_DIR, 'Other/shield.png'))
 HAMMER = pygame.image.load(os.path.join(IMG_DIR, 'Other/hammer.png'))
+GAME_OVER = pygame.image.load(os.path.join(IMG_DIR, 'Other/GameOver.png'))
+RESET = pygame.image.load(os.path.join(IMG_DIR, 'Other/Reset.png'))
+START = pygame.image.load(os.path.join(IMG_DIR, "Dino/DinoStart.png"))
+JUMP = pygame.image.load(os.path.join(IMG_DIR, "Other/jump.png"))
 
 BG = pygame.image.load(os.path.join(IMG_DIR, 'Other/Track.png'))
 
@@ -76,3 +80,4 @@ HEART = pygame.image.load(os.path.join(IMG_DIR, 'Other/SmallHeart.png'))
 DEFAULT_TYPE = "default"
 SHIELD_TYPE = "shield"
 HAMMER_TYPE = "hammer"
+JUMP_TYPE = "jump"	

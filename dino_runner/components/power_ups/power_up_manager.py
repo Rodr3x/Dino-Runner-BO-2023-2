@@ -1,9 +1,11 @@
 from dino_runner.components.power_ups.shield import Shield
 from dino_runner.components.power_ups.hammer import Hammer
 from random import randint
+import pygame
 
 class PowerUpManager:
     def __init__(self):
+        #pygame.mixer.music.load("dino_runner/components/musicshield.mp3")
         self.power_ups = []
     
     def update(self, game_speed, points, player):
@@ -22,5 +24,6 @@ class PowerUpManager:
             power_up.update(game_speed, player)
     
     def draw(self, screen):
+        #pygame.mixer.music.play(3)
         for power_up in self.power_ups:
             power_up.draw(screen)
