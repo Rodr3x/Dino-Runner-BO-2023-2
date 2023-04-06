@@ -1,15 +1,16 @@
 import pygame 
 from dino_runner.utils.constants import SCREEN_WIDTH
+from random import randint
 
 class PowerUp:
-    Y_POS_POWER_UP = 175
+    Y_POS_POWER_UP = [250, 350]
     POWER_UP_DURATION = 5000
     def __init__(self, image, type):
         self.image = image
         self.type = type
         self.rect = self.image.get_rect()
-        self.rect.x = SCREEN_WIDTH
-        self.rect.y = self.Y_POS_POWER_UP
+        self.rect.x = SCREEN_WIDTH*3 - 123
+        self.rect.y = self.Y_POS_POWER_UP[randint(0, len(self.Y_POS_POWER_UP)-1)]
         self.start_time = 0
         self.time_up = 0
         self.used = False

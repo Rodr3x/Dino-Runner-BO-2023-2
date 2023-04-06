@@ -9,7 +9,10 @@ class Cactus(Obstacle):
         self.type = randint(0, 5)
         image = self.vec[self.type]
         super().__init__(image)
-        self.rect.y = self.Y_POS_CACTUS 
+        if self.type >= 3:
+            self.rect.y = self.Y_POS_CACTUS - 25
+        else:
+            self.rect.y = self.Y_POS_CACTUS
         
 
 
