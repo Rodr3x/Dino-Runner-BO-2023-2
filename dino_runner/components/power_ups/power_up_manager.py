@@ -1,5 +1,8 @@
 from dino_runner.components.power_ups.shield import Shield
 from dino_runner.components.power_ups.hammer import Hammer
+from dino_runner.components.power_ups.jump import Jump
+from dino_runner.components.power_ups.life import Life
+
 from random import randint
 import pygame
 
@@ -9,11 +12,16 @@ class PowerUpManager:
         self.power_ups = []
     
     def update(self, game_speed, points, player):
-        if len(self.power_ups) == 0 and points % 200 == 0:
-            if randint(0,1) == 0:
+        if len(self.power_ups) == 0 and points % 400 == 0:
+            c = randint(0, 3)
+            if c == 0:
                 self.power_ups.append(Shield())
-            else:
+            elif c == 1:
                 self.power_ups.append(Hammer())
+            elif c == 2:
+                self.power_ups.append(Jump())
+            else:
+                self.power_ups.append(Life())
 
         for power_up in self.power_ups:
             if power_up.used or power_up.rect.x < -power_up.rect.width:

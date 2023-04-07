@@ -1,7 +1,7 @@
 import pygame
 from dino_runner.utils.constants import SCREEN_WIDTH
 from dino_runner.utils.constants import BIRD
-
+from random import randint
 class Obstacle:
     def __init__(self, image, name):
         self.image = image
@@ -13,6 +13,7 @@ class Obstacle:
     def update(self, game_speed, player): # para actualizar
         if self.name == "Birds":
             self.image = BIRD[0] if self.step_index < 5 else BIRD[1]
+
             self.step_index += 1
             game_speed *= 1.20
 
@@ -29,6 +30,7 @@ class Obstacle:
 
         if self.step_index >= 10:
             self.step_index = 0
+            self.rect.y += randint(0, 15)
 
     def draw(self, screen): # para dibujar
         screen.blit(self.image, self.rect)

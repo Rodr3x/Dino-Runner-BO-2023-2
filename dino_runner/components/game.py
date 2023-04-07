@@ -40,7 +40,6 @@ class Game:
         self.player = Dinosaur()
         self.obstacle_manager = ObstacleManager()
         self.power_up_manager = PowerUpManager()
-        self.lifes = 3
         self.points = 0
         self.death_count = 0
 
@@ -85,6 +84,11 @@ class Game:
             self.player.update(user_input)
             self.obstacle_manager.update(self.game_speed, self.player)
             self.power_up_manager.update(self.game_speed, self.points, self.player)
+
+            if self.player.sw and self.death_count > 0:
+                self.player.sw = False
+                self.death_count -= 1
+
             self.points += 1
             
             if self.points % 200 == 0:
@@ -156,7 +160,7 @@ class Game:
         self.screen.blit(score, score_rect)
         
     def draw_life(self):
-        lifes, lifes_rect = text_utils.get_message("Lifes: " + str(self.lifes-self.death_count), 20, 1000, 80)
+        lifes, lifes_rect = text_utils.get_message("Lifes: " + str(3-self.death_count), 20, 1000, 80)
         self.screen.blit(lifes, lifes_rect)
     
 
@@ -205,7 +209,7 @@ class Game:
                 else:
                     self.screen.blit(HEART, (self.x_pos_heart-10, self.y_pos_heart+150))
             
-            textLives, textLives_rect = text_utils.get_message("You have {} lives".format(self.lifes-self.death_count), 25, height = SCREEN_HEIGHT // 2 + 100)
+            textLives, textLives_rect = text_utils.get_message("You have {} lives".format(3-self.death_count), 25, height = SCREEN_HEIGHT // 2 + 100)
             text, text_rect = text_utils.get_message("Press any key to restart the game", 30)
             score, score_rect = text_utils.get_message("Your score: "+ str(self.points), 30, height = SCREEN_HEIGHT // 2 + 50)
             self.screen.blit(text, text_rect)
@@ -253,5 +257,5 @@ class Game:
         self.power_up_manager = PowerUpManager()
         self.points = 0
         self.death_count = 0
-        self.lifes = 3
+        self.player.lifes = 3
         self.scores = []

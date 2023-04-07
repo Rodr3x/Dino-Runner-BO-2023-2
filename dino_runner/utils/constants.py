@@ -72,6 +72,8 @@ GAME_OVER = pygame.image.load(os.path.join(IMG_DIR, 'Other/GameOver.png'))
 RESET = pygame.image.load(os.path.join(IMG_DIR, 'Other/Reset.png'))
 START = pygame.image.load(os.path.join(IMG_DIR, "Dino/DinoStart.png"))
 JUMP = pygame.image.load(os.path.join(IMG_DIR, "Other/jump.png"))
+LIFE = pygame.image.load(os.path.join(IMG_DIR, 'Other/SmallHeart.png'))
+
 
 BG = pygame.image.load(os.path.join(IMG_DIR, 'Other/Track.png'))
 
@@ -81,3 +83,4 @@ DEFAULT_TYPE = "default"
 SHIELD_TYPE = "shield"
 HAMMER_TYPE = "hammer"
 JUMP_TYPE = "jump"	
+LIFE_TYPE = "life"

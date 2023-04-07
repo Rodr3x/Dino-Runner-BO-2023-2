@@ -37,6 +37,8 @@ class Dinosaur:
         self.hammer = False
         self.time_up_power_up = 0
         self.time_to_show = 0
+        self.lifes = 3
+        self.sw = False
 
     def update(self, user_input):
         if self.dino_jump:
